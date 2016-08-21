@@ -10,6 +10,7 @@ http://udacity.github.io/git-styleguide/
 	-git branch ->check current branch
 	-git branch [branch-name] -> -add new branch
 	-git checkout [branch-name] -> switch active branch
+	-git branch -d [d-branch] -> delete branch label
 	#current branch will updated when you make a change
 	#so be sure that you are in the correct branch name, so your changes is updated in the branch that you want
 
@@ -26,6 +27,13 @@ http://udacity.github.io/git-styleguide/
 	use "git diff" with no argument will do that
 	show any changes you've made that you haven't added to staging area
 
+//combine branch
+	-git merge [branch1] [branch2]
+	-git merge --abort    -> restore file before started the merge
+						  -> then fix the conflict
+
+//show diff by a commit compared to its parent
+	-git show [id]
 
 //get colored  output 
 	-git config --global color.ui auto
