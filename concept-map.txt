@@ -15,6 +15,8 @@ http://udacity.github.io/git-styleguide/
 
 //showing log of recent commits with information about them
 	-git log
+	-git log --graph --oneline [branch-master] [branch-coins]
+			-->show graph log, one line, just show up master and coins
 
 //Melihat perbedaan kode
 	-git diff [before_id] [after_id]
