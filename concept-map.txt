@@ -30,8 +30,10 @@ http://udacity.github.io/git-styleguide/
 //get colored  output 
 	-git config --global color.ui auto
 
-//restoring a previous version
+//restoring a previous version, set current branch
 	-git checkout [previous-version-id]
+	-git checkout [branch-name]
+	-git checkout -b [new-branch-name] -> Is the sortcut for {git branch new-branch-name -> git checkout new-branch-name}
 
 //Langkah untuk memperbaiki code
 	1. git log
@@ -58,6 +60,9 @@ http://udacity.github.io/git-styleguide/
 	-git commit
 	-git commit -m "Message"
 
+//Detached head
+	to get this message we checked out a commit, not a branch
+	#head = current commit
 
 //Git command review
 Compare two commits, printing each line that is present in one commit but not the other.
