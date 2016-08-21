@@ -1,0 +1,142 @@
+nb: How often to commit, kalo tiap perubahan langsung commit, itu akan membuat kita susah untuk membaca history karena banyak commit yang ada
+rule: (1commit per logical change.) ex: Fix typo, fix bug in separate part of the file, kita harus menggunakan 1 commit untuk setiap perubahan logically, jadi mudah untuk dipahami, git memungkinkan kita untuk menulis penjelasan disetiap commit
+
+http://udacity.github.io/git-styleguide/
+
+//Clone repository
+	-git clone [url-repository]
+
+//branch
+	git branch ->check current branch
+	git branch [branch-name] -> -add new branch
+	git checkout [branch-name] -> switch active branch
+
+
+//showing log of recent commits with information about them
+	-git log
+
+//Melihat perbedaan kode
+	-git diff [before_id] [after_id]
+	-git diff       //yang masih di working directory
+	-git diff --staged //shows diff between staging area and commited 						 repo
+	#staging area and working directory are not commits so they don't have id's.. So, for compare working directory and staging area
+	use "git diff" with no argument will do that
+	show any changes you've made that you haven't added to staging area
+
+
+//get colored  output 
+	-git config --global color.ui auto
+
+//restoring a previous version
+	-git checkout [previous-version-id]
+
+//Langkah untuk memperbaiki code
+	1. git log
+	2. Check mana yang mungkin ada error
+	3. git diff [id-sebelum] [id-sesudah]
+	4. udah nemu code mana yang bikin bug
+
+//Initializes or Creates a new repository
+	-git init
+
+//Check status, shows which have changed since the last commit
+	-git status
+
+//add to git repository(staging area)
+	-git add [file-name]
+	#you can add multiply file by git add [file, file] *separated by coma
+
+//remove added file 
+	-git reset [{kosong} / {file-name}]
+	-git reset --hard //discard any changes either in the workingdir/					    the staging area
+	#you can reset multiply file by separated by coma
+
+//Commit changes
+	-git commit
+	-git commit -m "Message"
+
+
+//Git command review
+Compare two commits, printing each line that is present in one commit but not the other.
+
+*** git diff will do this. It takes two arguments - the two commit ids to compare. 
+
+
+Make a copy of an entire Git repository, including the history, onto your own computer.
+
+*** git clone will do this. It takes one argument - the url of the repository to copy. 
+
+
+*** git checkout will do this. It takes one argument - the commit ID to restore. 
+
+
+Show the commits made in this repository, starting with the most recent.
+
+*** git log will do this. It doesn't take any arguments.
+*************************************
+Behavior of git clone
+For each of the statement on the next screen, select whether it is true if you clone a Git repository, if you copy a directory that is not being tracked using Git, or if it is true in both cases.
+*************************************
+Behavior of git log
+Suppose you ran git log in a repository. Part of the output is given below. If you were to run git checkout and examine each of these three commits in turn, which ones would you expect to contain code for a mute button?
+
+git log output:
+commit 7be5a12f1567866b0d77ccdf2055d1a33831da78
+Author: Ellison Leão <el@gmail.com>
+Date:   Fri Jul 11 12:56:26 2014 -0300
+
+    Add sound for the wing.
+
+commit 06d72e1f95f046002ec46f41cf71957227111141
+Author: Ellison Leão <el@gmail.com>
+Date:   Wed Jul 9 23:42:55 2014 -0300
+
+    Add mute button.
+
+commit 3d4d45b246aad6a1cd0afaf7cfae26966110727e
+Author: Ellison Leão <el@gmail.com>
+Date:   Mon Jul 7 17:35:47 2014 -0300
+
+    Fix leaderboard button
+*************************************
+Behavior of git diff
+Consider the same partial git log output as in the previous exercise. Which arguments would you need to give the git diff command for the lines of code that implement the mute button to be marked as additions (with a plus sign)?
+
+To make the options on the next screen easier to read, only the first 6 characters of each commit ID have been included. This will not change the output of git diff unless two commits start with the same 6 characters.
+
+git log output
+For reference, here is the output from git log again:
+
+commit 7be5a12f1567866b0d77ccdf2055d1a33831da78
+Author: Ellison Leão <el@gmail.com>
+Date:   Fri Jul 11 12:56:26 2014 -0300
+
+    Add sound for the wing.
+
+commit 06d72e1f95f046002ec46f41cf71957227111141
+Author: Ellison Leão <el@gmail.com>
+Date:   Wed Jul 9 23:42:55 2014 -0300
+
+    Add mute button.
+
+commit 3d4d45b246aad6a1cd0afaf7cfae26966110727e
+Author: Ellison Leão <el@gmail.com>
+Date:   Mon Jul 7 17:35:47 2014 -0300
+
+    Fix leaderboard button
+*************************************
+Behavior of git checkout
+On the next screen, check whether each statement is always, sometimes, or never true about using git checkout to checkout an earlier commit in a repository with multiple files.
+*************************************
+*************************************
+//Git Errors and Warnings Solution
+Should not be doing an octopus
+Octopus is a strategy Git uses to combine many different versions of code together. This message can appear if you try to use this strategy in an inappropriate situation.
+
+You are in 'detached HEAD' state
+HEAD is what Git calls the commit you are currently on. You can “detach” the HEAD by switching to a previous commit, which we’ll see in the next video. Despite what it sounds like, it’s actually not a bad thing to detach the HEAD. Git just warns you so that you’ll realize you’re doing it.
+
+Panic! (the 'impossible' happened)
+This is a real error message, but it’s not output by Git. Instead it’s output by GHC, the compiler for a programming language called Haskell. It’s reserved for particularly surprising errors!
+
+Takeaway We hope these errors and warnings amused you as much as they amused us! Now that you know what kind of errors Git can throw, you’re ready to start checking out previous versions of files with Caroline.
