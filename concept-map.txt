@@ -7,10 +7,11 @@ http://udacity.github.io/git-styleguide/
 	-git clone [url-repository]
 
 //branch
-	git branch ->check current branch
-	git branch [branch-name] -> -add new branch
-	git checkout [branch-name] -> switch active branch
-
+	-git branch ->check current branch
+	-git branch [branch-name] -> -add new branch
+	-git checkout [branch-name] -> switch active branch
+	#current branch will updated when you make a change
+	#so be sure that you are in the correct branch name, so your changes is updated in the branch that you want
 
 //showing log of recent commits with information about them
 	-git log
