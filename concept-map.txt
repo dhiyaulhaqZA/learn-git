@@ -1,6 +1,11 @@
 nb: How often to commit, kalo tiap perubahan langsung commit, itu akan membuat kita susah untuk membaca history karena banyak commit yang ada
 rule: (1commit per logical change.) ex: Fix typo, fix bug in separate part of the file, kita harus menggunakan 1 commit untuk setiap perubahan logically, jadi mudah untuk dipahami, git memungkinkan kita untuk menulis penjelasan disetiap commit
 
+Difference between git remote add and git clone 
+#	git remote add just creates an entry in your git config that specifies a name for a particular URL. You must have an existing git repo to use this.
+
+#	git clone creates a new git repository by copying an existing one located at the URI you specify. git clone automatically sets up a remote pointing to the repository you cloned from.
+
 http://udacity.github.io/git-styleguide/
 
 //Clone repository
@@ -19,6 +24,35 @@ http://udacity.github.io/git-styleguide/
 	-git log --graph --oneline [branch-master] [branch-coins]
 			-->show graph log, one line, just show up master and coins
 
+// view and create remote
+	-git remote -> to see all the current remotes
+	-git remote add [name] {url} ->add the repository on github as  								a remote, that refer to the 									repository on GitHub
+	-git remote -v -> verbose informations
+	#if you only have one remote, it's standard to name it origin
+
+//push commit to GitHub
+	-git push 
+	-git push [the remote] [local-branch] -> push changes to the 											remote and branch that 											I'd like to push
+	#copied add of the commits reachable from my branch, branch that created in GitHub will have the same name as local branch that I pushed
+
+//pull repository from GitHub to local repository
+	-git pull [remote] [branch-on-the-remote]
+	-git pull [upstream/master] [master] -> get the latest commit 										from the original repo
+## git pull origin master = git fetch origin -> followed by
+							git merge master origin/master
+
+*Sarah accidentally says that the local master is the only thing that changes when you run git pull origin master. However, the 
+
+**{working directory and staging area will also update when you run git pull}**. 
+
+That's why when you run git pull, you see your files update, not just the git log output.
+
+## origin/master is a GitHub repo,
+## master is local repo
+//Update the local copy of the remote branch 
+	-git fetch
+	* use git log and git diff to see what changes were introduced both on the local and remote repositories
+
 //Melihat perbedaan kode
 	-git diff [before_id] [after_id]
 	-git diff       //yang masih di working directory
@@ -30,7 +64,12 @@ http://udacity.github.io/git-styleguide/
 //combine branch
 	-git merge [branch1] [branch2]
 	-git merge --abort    -> restore file before started the merge
-						  -> then fix the conflict
+## Fast forward merges
+	-Criteria: If the branch you are merging into is an ancestor of the branch that you're merging from
+	-Ancestry is merging into ancestor (not ancestry into ancestry)
+	---ancestor1-<--ancestor2--<--ancestry
+			\_____________________/
+				fastforward merges
 
 //show diff by a commit compared to its parent
 	-git show [id]
@@ -62,7 +101,7 @@ http://udacity.github.io/git-styleguide/
 //remove added file 
 	-git reset [{kosong} / {file-name}]
 	-git reset --hard //discard any changes either in the workingdir/					    the staging area
-	#you can reset multiply file by separated by coma
+	#you can reset multiply file 
 
 //Commit changes
 	-git commit
@@ -71,6 +110,9 @@ http://udacity.github.io/git-styleguide/
 //Detached head
 	to get this message we checked out a commit, not a branch
 	#head = current commit
+
+//Colaboration
+	-setting -> collaborators -> add GitHub collaborators -> add collaborator button, you can add anyone who you would like to be able to push to your repository
 
 //Git command review
 Compare two commits, printing each line that is present in one commit but not the other.
